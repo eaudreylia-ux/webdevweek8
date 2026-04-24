@@ -7,7 +7,7 @@
     </div>
 @endif
     <h1>Store Page</h1>
-    @can('insert-product')
+    @can('insert_product')
     <a href="{{ route('product.insert-form') }}" class="btn btn-primary">Insert New Product</a>
     @endcan
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -20,7 +20,7 @@
                         <p class="card-text"><i>{{ $product->product_category->name }}</i></p>
                         <p class="card-text">Rp {{ number_format($product->price, 2) }}</p>
                         <p class="card-text">{{ $product->details }}</p>
-                        
+
                         <!-- Add to Cart Trigger -->
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToCartModal{{ $product->id }}" @if($product->stock < 1) disabled @endif>
                      <i class="fas fa-cart-plus me-1"></i> {{ $product->stock > 0 ? 'Add to Cart' : 'Out of Stock' }}
@@ -53,13 +53,12 @@
                   </div>
 
 
-
-                        @can('edit-product')
-                        <a href="{{ route('product_edit_form', $product->id) }}" class="btn btn-warning">Edit Product</a>
+                        @can('update_product')
+                        <a href="{{ route('product.edit-form', $product->id) }}" class="btn btn-warning">Edit Product</a>
                         @endcan
                         
                         <!-- Button trigger modal -->
-                        @can('delete-product') 
+                        @can('delete_product') 
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product->id }}">
                             Delete
                         </button>

@@ -31,7 +31,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles() : HasMany
+    public function roles():HasMany
     {
         return $this->hasMany(UserRole::class);
     }
